@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+body {
+    background: #ccc;
+    display: grid;
+    font: 87.5%/1.5em 'Lato', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    place-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+    padding: 0;
+}
+
+.calendar-container {
+    position: relative;
+    width: 450px;
+}
+
+.calendar-container header {
+    border-radius: 1em 1em 0 0;
+    background: #e66b6b;
+    color: #fff;
+    padding: 3em 2em;
+}
+
+.day {
+    font-size: 8em;
+    font-weight: 900;
+    line-height: 1em;
+}
+
+.month {
+    font-size: 4em;
+    line-height: 1em;
+}
+
+.calendar {
+    background: #fff;
+    border-radius: 0 0 1em 1em;
+    -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, .2), 0 3px 1px #fff;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .2), 0 3px 1px #fff;
+    color: #555;
+    display: inline-block;
+    padding: 2em;
+}
+
+.calendar thead {
+    color: #e66b6b;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.calendar thead th {
+    padding: .5em 1em;
+    text-align: center;
+}
+
+.calendar td {
+    padding: .5em 1em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.calendar td button {
+    border: none;
+    background: none;
+    width: 100%;
+    height: 100%;
+}
+
+.calendar tbody td:hover {
+    background: #e66b6b;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.current-day {
+    color: #e66b6b;
+}
+
+.prev-month,
+.next-month {
+    color: #cacaca;
+}
+
+
+/* 
+    Animation text
+*/
+
+.animation-text {
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.title-word {
+    animation: color-animation 4s linear infinite;
+    font-size: 3em;
+    margin: 0 5px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.title-word-1 {
+    --color-1: #12c2e9;
+    --color-2: #c471ed;
+    --color-3: #f64f59;
+}
+
+.title-word-2 {
+    --color-1: #f953c6;
+    --color-2: #b91d73;
+    --color-3: #191654;
+}
+
+.title-word-3 {
+    --color-1: #1a2a6c;
+    --color-3: #fdbb2d;
+    --color-2: #b21f1f;
+}
+
+.title-word-4 {
+    --color-2: #DF8453;
+    --color-1: #3D8DAE;
+    --color-3: #43C6AC;
+}
+
+@keyframes color-animation {
+    0% {
+        color: var(--color-1)
+    }
+    32% {
+        color: var(--color-1)
+    }
+    33% {
+        color: var(--color-2)
+    }
+    65% {
+        color: var(--color-2)
+    }
+    66% {
+        color: var(--color-3)
+    }
+    99% {
+        color: var(--color-3)
+    }
+    100% {
+        color: var(--color-1)
+    }
+}
+
+
+/* Here are just some visual styles. 🖌 */
+
+
+/* Button css */
+
+.button {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, 10%);
+    margin: 0;
+}
+
+.button,
+.button:after {
+    width: 150px;
+    height: 76px;
+    line-height: 78px;
+    font-size: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    box-shadow: 6px 0px 0px #00E6F6;
+    outline: transparent;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button:after {
+    --slice-0: inset(50% 50% 50% 50%);
+    --slice-1: inset(80% -6px 0 0);
+    --slice-2: inset(50% -6px 30% 0);
+    --slice-3: inset(10% -6px 85% 0);
+    --slice-4: inset(40% -6px 43% 0);
+    --slice-5: inset(80% -6px 5% 0);
+    content: 'HOVER CAI LOZ';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
+    text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+    clip-path: var(--slice-0);
+}
+
+.button:hover:after {
+    animation: 2s glitch;
+    animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+    0% {
+        clip-path: var(--slice-1);
+        transform: translate(-20px, -10px);
+    }
+    10% {
+        clip-path: var(--slice-3);
+        transform: translate(10px, 10px);
+    }
+    20% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 10px);
+    }
+    30% {
+        clip-path: var(--slice-3);
+        transform: translate(0px, 5px);
+    }
+    40% {
+        clip-path: var(--slice-2);
+        transform: translate(-5px, 0px);
+    }
+    50% {
+        clip-path: var(--slice-3);
+        transform: translate(5px, 0px);
+    }
+    60% {
+        clip-path: var(--slice-4);
+        transform: translate(5px, 10px);
+    }
+    70% {
+        clip-path: var(--slice-2);
+        transform: translate(-10px, 10px);
+    }
+    80% {
+        clip-path: var(--slice-5);
+        transform: translate(20px, -10px);
+    }
+    90% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 0px);
+    }
+    100% {
+        clip-path: var(--slice-1);
+        transform: translate(0);
+    }
+}
+
+@media (min-width: 768px) {
+    .button,
+    .button:after {
+        width: 200px;
+        height: 86px;
+        line-height: 88px;
+    }
+}
+
+
+/* Flip card */
+
+h1 {
+    font-family: 'Roboto Mono', monospace;
+    color: #FFFFFF;
+}
+
+.box-card {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+    margin: 10px 20px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    color: black;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.flip-card-back img {
+    object-fit: cover;
+    width: 90%;
+    border-radius: 2%;
+    height: 80%;
+}
+
+.flip-card-back video {
+    object-fit: cover;
+    width: 90%;
+    border-radius: 2%;
+    height: 80%;
+}
+
+
+/* Gift button */
+
+.button-gift {
+    background-color: #3DD1E7;
+    border: 0 solid #E5E7EB;
+    box-sizing: border-box;
+    color: #000000;
+    display: flex;
+    font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.75rem;
+    padding: .75rem 1.65rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none #000000 solid;
+    text-decoration-thickness: auto;
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+    cursor: pointer;
+    transform: rotate(-2deg);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-gift:focus {
+    outline: 0;
+}
+
+.button-gift:after {
+    content: '';
+    position: absolute;
+    border: 1px solid #000000;
+    bottom: 4px;
+    left: 4px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+}
+
+.button-gift:hover:after {
+    bottom: 2px;
+    left: 2px;
+}
+
+@media (min-width: 768px) {
+    .button-gift {
+        padding: .75rem 3rem;
+        font-size: 1.25rem;
+    }
+}
